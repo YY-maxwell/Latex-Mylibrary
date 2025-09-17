@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{boxstyle/hruled}[2025/05/10 hruled style]
+
+
+\tcbset{
+    % 上下に水平線を引く
+    hruled/.style = {%
+        enhanced,% overlayを使うために必要
+        breakable,% ページまたぎ
+        boxrule = 0pt, % 枠線なし
+        frame hidden,% 標準枠線（薄い線）非表示
+        before skip=10pt, after skip=10pt,
+        overlay={% 上下の水平線を描画
+            \path let \p1 = (title.south east), \p2 = (frame.north east) in% まず title.east の座標を取得して一時保存
+                coordinate (T1) at (\x1,\y1)
+                coordinate (T2) at (\x2,\y1);
+            \draw[black!70, line width=1pt] (T1) -- (T2);% T1 から T2 に線を引く（タイトル右端から右へ）
+            \draw[black!70, line width=1pt]
+            ([xshift=0mm]frame.south west) -- ([xshift=0mm]frame.south east);% 下線は普通に引く
+        },
+        title = {},
+        colback=white,
+        colframe=black,
+        sharp corners,
+        coltitle=black,
+        colbacktitle=white,% ← タイトル背景色を白に
+        attach boxed title to top left = {
+            yshift = 0mm, xshift = -3pt
+        },
+        boxed title style = {
+            empty,
+            top = 0pt,
+            bottom = -5pt,
+        }
+    }
+}

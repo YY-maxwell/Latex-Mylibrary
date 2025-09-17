@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hyperlinks}[2025/09/17 settings for hyperlinks]
+
+
+\RequirePackage{hyperref}% Core package for hyperlinks and PDF metadata
+\RequirePackage{bookmark}% Improves PDF bookmark handling 
+\RequirePackage{xurl}% Allows line breaks in long URLs
+
+
+% --- Hyperlink and PDF metadata settings ---
+\definecolor{mylink}{rgb}{0.1, 0.4, 0.6}
+\definecolor{myurl}{rgb}{0.4, 0.6, 0.1}
+\definecolor{mycite}{rgb}{0.9, 0.3, 0.1}
+\hypersetup{%
+    unicode,% support Unicode characters in bookmarks
+    colorlinks=true,% use colored text for links instead of colored boxes
+    breaklinks=true,% Allow links to break across lines (especially useful in narrow columns or beamer)
+    linkcolor=mylink,% internal links : mylink
+    urlcolor=myurl,% URL : magenta
+    citecolor=mycite,% citation links : green
+    % bookmarks=true,% Enable PDF bookmarks (the sidebar with document structure)
+    bookmarksnumbered=true,% show section numbers in the bookmarks
+}
+% "Bookmarks" refer to the navigation panel shown in PDF viewers.

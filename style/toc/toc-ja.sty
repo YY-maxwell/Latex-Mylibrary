@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{toc/toc-ja}[2025/09/17 Normal TOC layout for jlreq]
+
+\RequirePackage{tocloft}
+
+
+% --- セクション部分 --- 
+\@ifundefined{cftsecfont}{}{
+    \renewcommand{\cftsecfont}{\sffamily\gtfamily}% セクション名
+    \renewcommand{\cftsecpagefont}{\sffamily\gtfamily}% ページ番号 
+}
+
+
+% --- サブセクション部分 --- 
+\@ifundefined{cftsubsecfont}{}{
+    \renewcommand{\cftsubsecfont}{\sffamily}% サブセクション名
+    \renewcommand{\cftsubsecpagefont}{\sffamily}% ページ番号
+}
+
+
+% --- サブサブセクション部分 --- 
+\@ifundefined{cftsubsubsecfont}{}{
+    \renewcommand{\cftsubsubsecpagefont}{\sffamily}% ページ番号
+}
+
+
+% --- ドットリーダーの調整 ---
+\renewcommand{\cftsecleader}{\hspace{1em}\leaders\hbox{\raisebox{0.2ex}{\scalebox{0.75}{.}}\kern0.2em}\hfill}
+\renewcommand{\cftsubsecleader}{\hspace{.5em}\leaders\hbox{\raisebox{0.2ex}{\scalebox{0.75}{.}}\kern0.2em}\hfill}
+\renewcommand{\cftsubsubsecleader}{\hspace{.5em}\leaders\hbox{\raisebox{0.2ex}{\scalebox{0.75}{.}}\kern0.2em}\hfill}
+
+
+
+% --- Chapter Appearance (for book/report class) ---
+\@ifundefined{cftchapfont}{}{
+    \renewcommand{\cftchapfont}{\Large\sffamily\gtfamily}
+    \renewcommand{\cftchappagefont}{\large\sffamily\gtfamily}
+}

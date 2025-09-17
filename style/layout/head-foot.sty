@@ -1,0 +1,26 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{layout/head-foot}[2025/09/17 default settings for header and footer]
+
+
+\RequirePackage{fancyhdr}% package for custom headers/footers
+\RequirePackage{etoolbox}% required to use \patchcmd
+
+
+% === Header layout: section name on the left, subsection name on the right, page number at the bottom ===
+% Redefine \sectionmark to remove \MakeUppercase and \subsectionmark to display subsection name in the right header
+\makeatletter
+    \patchcmd{\sectionmark}{\MakeUppercase}{}{}{}% avoid forcing uppercase in left header
+    \renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}%
+\makeatother%
+
+\pagestyle{fancy}%
+\fancyhf{}%
+\fancyhead[L]{\leftmark}%
+\fancyhead[R]{\rightmark}%
+\fancyfoot[C]{\thepage}%
+\renewcommand{\headrulewidth}{0.3pt}%
+\setlength{\headheight}{18pt}% with 20truemm margins, LaTeX warns that head height is too small
+\setlength{\headwidth}{\textwidth}%
+
+
+

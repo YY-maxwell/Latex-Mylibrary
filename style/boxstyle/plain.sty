@@ -1,0 +1,34 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{boxstyle/plain}[2025/05/10 plain style]
+
+
+\tcbset{
+    % 装飾なし
+    plain/.style = {%
+        enhanced,%
+        frame hidden,%
+        colback=white,%
+        coltitle=black,%
+        detach title,%
+        boxrule=0pt,%
+        sharp corners,%
+        before skip=2pt,%
+        after skip=2pt,%
+        breakable,%
+    }
+}
+
+
+% underline
+\RequirePackage{xfp} % ← 数値演算のために必要！
+\newcommand{\myunderline}[2][0.4pt]{%
+    \begingroup
+        \edef\linewidthval{#1}%
+        \edef\yshiftval{\fpeval{#1/2}}%
+        \tikz[baseline=(X.base)]{
+            \node[inner sep=0pt, outer sep=0pt, anchor=base] (X) {#2};
+            \draw[line width=\linewidthval]
+            ([yshift=-\yshiftval-1 pt]X.south west) -- ([yshift=- \yshiftval-1 pt]X.south east);
+        }%
+    \endgroup
+}

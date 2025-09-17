@@ -1,0 +1,21 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{boxstyle/westruled}[2025/05/10 westruled style]
+
+
+\tcbset{
+    % 左側に線を引く
+    westruled/.style = {
+        enhanced,% tikz系のコマンドに必要(overlay)
+        detach title,% タイトルボックスを削除
+        frame hidden,% 枠線を消去
+        sharp corners,% 角を直角
+        colback = white,
+        coltitle = black,
+        before skip = 5pt,  % ← 上の余白
+        after skip = 5pt,   % ← 下の余白
+        overlay = {
+            \draw[black, line width=1pt]
+            ([xshift=-2mm]interior.south west) -- ([xshift=-2mm]interior.north west); 
+        }
+    }
+}

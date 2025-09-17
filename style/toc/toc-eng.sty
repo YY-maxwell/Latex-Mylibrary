@@ -1,0 +1,41 @@
+\NeedsTeXFormat{LaTeX2e}%
+\ProvidesPackage{toc/toc-eng}[2025/09/17 Normal TOC layout for English material]
+
+
+\RequirePackage{tocloft}% provides commands to customize TOC entries
+
+
+% --- section entries in TOC ---
+\@ifundefined{cftsecfont}{}{
+    \renewcommand{\cftsecfont}{\Large\bfseries}% section name 
+    \renewcommand{\cftsecpagefont}{\large\normalfont}% page number 
+}
+\setlength{\cftbeforesecskip}{15pt}
+
+
+%--- subsection entries in TOC --- 
+\@ifundefined{cftsubsecfont}{}{
+    \renewcommand{\cftsubsecfont}{\large\bfseries}% subsection name
+    \renewcommand{\cftsubsecpagefont}{\large}% page number
+}
+\setlength{\cftbeforesubsecskip}{10pt}
+
+
+% --- subsubsection entries in TOC ---
+\@ifundefined{cftsubsubsecfont}{}{
+    \renewcommand{\cftsubsubsecfont}{\bfseries}% subsection name
+    \renewcommand{\cftsubsubsecpagefont}{\bfseries}% page number
+}
+
+
+% --- appearance of dot leaders ---
+\renewcommand{\cftsecleader}{\hspace{1em}\leaders\hbox{\raisebox{0.2ex}{\scalebox{0.75}{.}}\kern0.2em}\hfill}
+\renewcommand{\cftsubsecleader}{\hspace{.5em}\leaders\hbox{\raisebox{0.2ex}{\scalebox{0.75}{.}}\kern0.2em}\hfill}
+\renewcommand{\cftsubsubsecleader}{\hspace{.5em}\leaders\hbox{\raisebox{0.2ex}{\scalebox{0.75}{.}}\kern0.2em}\hfill}
+
+
+% --- Chapter Appearance (for book/report class) ---
+\@ifundefined{cftchapfont}{}{
+    \renewcommand{\cftchapfont}{\LARGE\bfseries}
+    \renewcommand{\cftchappagefont}{\Large}
+}
