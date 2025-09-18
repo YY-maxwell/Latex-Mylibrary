@@ -32,7 +32,7 @@
 \RequirePackage{macros}
 \RequirePackage{layout/page-margins,layout/head-foot}
 \RequirePackage{toc/toc-eng}
-\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled}
+\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled, boxstyle/proofstyle}
 \RequirePackage{hyperlinks}
 
 % --- numbering systems for equation and theorem ---------------------------------
@@ -57,15 +57,12 @@
         \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
         % define theorem environments
         \newtcbtheorem[number within=section]{definition}{Definition}{
-            westruled,
-            overlay = {
-                \draw[black, line width=0.5pt]
-                ([xshift=0mm,yshift=-7.6mm]interior.north west) -- ([xshift=0mm,yshift=1mm]interior.south west);
-            },
+            proofstyle,
+            line color = black,
             separator sign none,
             fonttitle = \bfseries,
             before upper = {%
-                \hspace*{-1.5em}\tcbtitle\textbf{.}\;
+                \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
         }{def}
     }{% 
@@ -74,15 +71,12 @@
         \renewcommand{\thetheorem}{\thesubsection.\arabic{theorem}}
         % define theorem environment
         \newtcbtheorem[number within=subsection]{definition}{Definition}{
-            westruled,
-            overlay = {
-                \draw[black, line width=0.5pt]
-                ([xshift=0mm,yshift=-7.8mm]interior.north west) -- ([xshift=0mm,yshift=1.68mm]interior.south west);
-            },
+            proofstyle,
+            line color = black,
             separator sign none,
             fonttitle = \bfseries,
             before upper = {%
-                \hspace*{-1.5em}\tcbtitle\textbf{.}\;
+                \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
         }{def}
     }%
@@ -94,7 +88,7 @@
         simpleboxed,
         separator sign none,
         fonttitle = \bfseries,
-        fontupper=\itshape,
+        fontupper = \itshape,
         before skip=0mm,
         after skip=-0mm,
     }{thm}
@@ -102,41 +96,41 @@
         simpleboxed,
         separator sign none,
         fonttitle = \bfseries,
-        fontupper=\itshape
+        fontupper = \itshape
     }{lem}
     \newtcbtheorem[use counter from=definition]{corollary}{Corollary}{
         simpleboxed,
         separator sign none,
         fonttitle = \bfseries,
-        fontupper=\itshape
+        fontupper = \itshape
     }{cor}
     \newtcbtheorem[use counter from=definition]{proposition}{Proposition}{
         simpleboxed,
         separator sign none,
         fonttitle = \bfseries,
-        fontupper=\itshape
+        fontupper = \itshape
     }{prop}
     \newtcbtheorem[use counter from=definition]{example}{Example}{
         plain,
         separator sign none,
         fonttitle = \bfseries,
-        before upper={
-            \hspace*{-1.5em}\tcbtitle\textbf{.}\;
+        before upper = {
+            \hspace*{-14pt}\tcbtitle\textbf{.}\;
         },
     }{ex}
     \newtcolorbox{remark}{
         plain,
         fonttitle = \bfseries,
-        before upper={
-            \hspace*{-1.5em}\tcbtitle\hspace{0.5em}
+        before upper = {
+            \hspace*{-14pt}\tcbtitle\;
         },
         title = Remark.
     }
     \newtcolorbox{notation}{
         plain,
         fonttitle = \bfseries,
-        before upper={
-            \hspace*{-1.5em}\tcbtitle\hspace{0.5em}
+        before upper = {
+            \hspace*{-14pt}\tcbtitle\;
         },
         title = Notation.
     }
@@ -144,16 +138,13 @@
     \newcommand{\blacksquare}{■}
     \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
-        westruled,
-        overlay = {
-            \draw[gray, line width=0.5pt]
-            ([xshift=0mm,yshift=-7.8mm]interior.north west) -- ([xshift=0mm,yshift=1.0mm]interior.south west);
-        },
+        proofstyle,
+        line color = gray,
         fonttitle = \bfseries,
+        title = {Proof.},
         before upper={
-            \hspace*{-1.5em}\tcbtitle\hspace{0.5em}
-        },
-        title = Proof.
+            \hspace*{-14pt}\tcbtitle\;
+        }
     }
     \newenvironment{myproof}{
         \begin{proofbox}

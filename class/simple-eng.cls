@@ -32,7 +32,7 @@
 \RequirePackage{macros}
 \RequirePackage{layout/page-margins,layout/head-foot}
 \RequirePackage{toc/toc-eng}
-\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled}
+\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled, boxstyle/proofstyle}
 \RequirePackage{hyperlinks}
 \RequirePackage{amsthm}
 
@@ -137,16 +137,13 @@
     \newcommand{\blacksquare}{■}
     \renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
-        westruled,
-        overlay = {
-            \draw[gray, line width=0.5pt]
-            ([xshift=0mm,yshift=-7.8mm]interior.north west) -- ([xshift=0mm,yshift=1.0mm]interior.south west);
-        },
+        proofstyle,
+        line color = gray,
         fonttitle = \bfseries,
+        title = {Proof.},
         before upper={
-            \hspace*{-1.5em}\tcbtitle\hspace{0.5em}
-        },
-        title = Proof.
+            \hspace*{-14pt}\tcbtitle\;
+        }
     }
     \newenvironment{myproof}{
         \begin{proofbox}
