@@ -3,10 +3,6 @@
 
 
 % --- some algebraic notations ---
-\let\Re\relax
-\DeclareMathOperator{\Re}{Re}% real part
-\let\Im\relax
-\DeclareMathOperator{\Im}{Im}% image, imaginary part
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Coker}{Coker}
 \DeclareMathOperator{\id}{id}% identity morphism
@@ -25,7 +21,10 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-
+\AtBeginDocument{%
+    \renewcommand{\Re}{\operatorname{Re}}%
+    \renewcommand{\Im}{\operatorname{Im}}%
+}
 
 % --- categorical notations ---
 \newcommand{\Set}{\mathcal{S}et}
