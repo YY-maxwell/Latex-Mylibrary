@@ -45,6 +45,13 @@
 \newcommand{\ri}{\longrightarrow}
 \newcommand{\mono}{\hookrightarrow}% mono (injection)
 \newcommand{\epi}{\twoheadrightarrow}% epi (surjection)
+\newcommand{\circlearrowright}{% circular arrow for commutativity
+    \begin{tikzpicture}
+    \draw[line width=0.35pt] (0,0) arc[radius=0.12, start angle=-50, end angle=280];
+    \draw[line width=0.35pt] (-0.01, 0.07) to [out=-65, in=75] (0,0);
+    \draw[line width=0.35pt] (0.065, 0.01) to [out=-180, in=30] (0,0);
+    \end{tikzpicture}
+}
 
 
 % --- calligraphic letters ---
