@@ -33,7 +33,7 @@
 \RequirePackage{font-ja}
 \RequirePackage{layout/page-margins,layout/head-foot}
 \RequirePackage{toc/toc-ja}
-\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled}
+\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled, boxstyle/proofstyle}
 \RequirePackage{hyperlinks}
 
 
@@ -57,34 +57,28 @@
         \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
         % 定義環境
         \newtcbtheorem[number within=section]{definition}{定義}{
-            westruled,
-            overlay = {
-                \draw[black, line width=0.5pt]%
-                ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=2.0mm]interior.south west);
-            },
-            separator sign ={.},
-            fonttitle = \sffamily\gtfamily,
+            proofstyle,
+            line color = black,
+            separator sign none,
+            fonttitle = \gtfamily\sffamily,
             before upper = {%
-                \hspace*{-1.5em}\tcbtitle.\;
+                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle\textbf{.}}\;
             },
-        }{def} 
+        }{def}
     }{% 
         % if thmnumbering=subsection
         \@addtoreset{theorem}{subsection}
         \renewcommand{\thetheorem}{\thesubsection.\arabic{theorem}}
         % 定義環境
         \newtcbtheorem[number within=subsection]{definition}{定義}{
-            westruled,
-            overlay = {
-                \draw[black, line width=0.5pt]%
-                ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=2.0mm]interior.south west);
-            },
-            separator sign = {.},
-            fonttitle = \sffamily\gtfamily,
+            proofstyle,
+            line color = black,
+            separator sign none,
+            fonttitle = \gtfamily\sffamily,
             before upper = {%
-                \hspace*{-1.5em}\tcbtitle.\;
+                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle\textbf{.}}\;
             },
-        }{def} 
+        }{def}
     }
     \makeatother
 
@@ -92,7 +86,7 @@
     \newtcbtheorem[use counter from=definition]{theorem}{定理}{
         simpleboxed,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily,
+        fonttitle = \sffamily\gtfamily
     }{thm}
     \newtcbtheorem[use counter from=definition]{lemma}{補題}{
         simpleboxed,
@@ -114,7 +108,7 @@
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper={
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
     }{ex}
     \newtcolorbox{remark}{
@@ -122,7 +116,7 @@
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper={
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         title = 注意
     }
@@ -131,7 +125,7 @@
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper={
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         title = 記法
     }
@@ -139,17 +133,13 @@
     \newcommand{\blacksquare}{■}
     \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
-        westruled,
-        overlay = {
-            \draw[gray, line width=0.4pt]%
-            ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=2.0mm]interior.south west);
-        },
+        proofstyle,
+        line color = gray,
         fonttitle = \gtfamily,
+        title = {証明.},
         before upper={
-            \hspace*{-1.5em}\tcbtitle.\;
-        },
-        title = 証明,
-        before skip=0pt,
+            \hspace*{-14pt}\tcbtitle\;
+        }
     }
     \newenvironment{myproof}{
         \begin{proofbox}

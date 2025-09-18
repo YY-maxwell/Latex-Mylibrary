@@ -33,7 +33,7 @@
 \RequirePackage{font-ja}
 \RequirePackage{layout/page-margins,layout/head-foot}
 \RequirePackage{toc/toc-ja}
-\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled}
+\RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled, boxstyle/proofstyle}
 \RequirePackage{hyperlinks}
 
 % ---------- 定理環境，数式・定理番号の設定 -----------------------------------------------------
@@ -58,9 +58,9 @@
         \newtcbtheorem[number within=section]{definition}{定義}{
             plain,
             separator sign ={.},
-            fonttitle = \gtfamily,
+            fonttitle = \gtfamily\sffamily,
             before upper = {%
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
         }{def} 
     }{% 
@@ -71,21 +71,20 @@
         \newtcbtheorem[number within=subsection]{definition}{定義}{
             plain,
             separator sign = {.},
-            fonttitle = \gtfamily,
+            fonttitle = \gtfamily\sffamily,
             before upper = {%
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
         }{def} 
     }
     \makeatother
-
     % 定理環境の設定（定義環境は上ですでに設定済み）
     \newtcbtheorem[use counter from=definition]{theorem}{定理}{
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper = {%
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
     }{thm}
 
@@ -94,7 +93,7 @@
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper = {%
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         }, 
     }{lem}
     \newtcbtheorem[use counter from=definition]{corollary}{系}{
@@ -102,30 +101,30 @@
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper = {%
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
-            },
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
+        },
     }{cor}
     \newtcbtheorem[use counter from=definition]{proposition}{命題}{
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper = {%
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
-            },
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
+        },
     }{prop}
     \newtcbtheorem[use counter from=definition]{example}{例}{
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
         before upper={
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
     }{ex}
     \newtcolorbox{remark}{
         plain,
         fonttitle = \gtfamily\sffamily,
         before upper={
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         title = 注意
     }
@@ -133,26 +132,21 @@
         plain,
         fonttitle = \sffamily\gtfamily,
         before upper={
-            \hspace*{-1.5em}\myunderline[0.6pt]{\tcbtitle.}\;
+            \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         title = 記法
     }
-
     % 証明環境
     \newcommand{\blacksquare}{■}
     \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
-        westruled,
-        overlay = {
-            \draw[gray, line width=0.4pt]
-            ([xshift=0mm,yshift=2.17mm]interior.south west) 
-            -- ([xshift=0mm,yshift=-2.3em]interior.north west); 
-        },
+        proofstyle,
+        line color = gray,
         fonttitle = \gtfamily,
+        title = {証明.},
         before upper={
-            \hspace*{-1.5em}\tcbtitle.\;
-        },
-        title = 証明
+            \hspace*{-14pt}\tcbtitle\;
+        }
     }
     \newenvironment{myproof}{
         \begin{proofbox}
