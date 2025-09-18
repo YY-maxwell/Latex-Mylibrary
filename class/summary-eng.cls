@@ -94,23 +94,27 @@
         simpleboxed,
         separator sign none,
         fonttitle = \bfseries,
+        fontupper=\itshape,
         before skip=0mm,
         after skip=-0mm,
     }{thm}
     \newtcbtheorem[use counter from=definition]{lemma}{Lemma}{
         simpleboxed,
         separator sign none,
-        fonttitle = \bfseries
+        fonttitle = \bfseries,
+        fontupper=\itshape
     }{lem}
     \newtcbtheorem[use counter from=definition]{corollary}{Corollary}{
         simpleboxed,
         separator sign none,
-        fonttitle = \bfseries
+        fonttitle = \bfseries,
+        fontupper=\itshape
     }{cor}
     \newtcbtheorem[use counter from=definition]{proposition}{Proposition}{
         simpleboxed,
         separator sign none,
-        fonttitle = \bfseries
+        fonttitle = \bfseries,
+        fontupper=\itshape
     }{prop}
     \newtcbtheorem[use counter from=definition]{example}{Example}{
         plain,
