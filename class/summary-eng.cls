@@ -60,7 +60,7 @@
             westruled,
             overlay = {
                 \draw[black, line width=0.5pt]
-                ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=1.68mm]interior.south west);
+                ([xshift=0mm,yshift=-7.6mm]interior.north west) -- ([xshift=0mm,yshift=1mm]interior.south west);
             },
             separator sign none,
             fonttitle = \bfseries,
@@ -77,7 +77,7 @@
             westruled,
             overlay = {
                 \draw[black, line width=0.5pt]
-                ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=1.68mm]interior.south west);
+                ([xshift=0mm,yshift=-7.8mm]interior.north west) -- ([xshift=0mm,yshift=1.68mm]interior.south west);
             },
             separator sign none,
             fonttitle = \bfseries,
@@ -143,7 +143,7 @@
         westruled,
         overlay = {
             \draw[gray, line width=0.5pt]
-            ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=1.0mm]interior.south west);
+            ([xshift=0mm,yshift=-7.8mm]interior.north west) -- ([xshift=0mm,yshift=1.0mm]interior.south west);
         },
         fonttitle = \bfseries,
         before upper={

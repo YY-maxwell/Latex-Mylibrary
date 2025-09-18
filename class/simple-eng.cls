@@ -133,7 +133,6 @@
     \theoremstyle{mydefinition}
     \newtheorem*{remark}{Remark}
     \newtheorem*{notation}{Notation}
-
     % proof environment
     \newcommand{\blacksquare}{■}
     \renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
@@ -141,7 +140,7 @@
         westruled,
         overlay = {
             \draw[gray, line width=0.5pt]
-            ([xshift=0mm,yshift=-7.5mm]interior.north west) -- ([xshift=0mm,yshift=1.0mm]interior.south west);
+            ([xshift=0mm,yshift=-7.8mm]interior.north west) -- ([xshift=0mm,yshift=1.0mm]interior.south west);
         },
         fonttitle = \bfseries,
         before upper={
