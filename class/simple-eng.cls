@@ -131,8 +131,14 @@
     }
     \makeatother
     \theoremstyle{mydefinition}
+    \newtheorem*{definition*}{Definition}
     \newtheorem*{remark}{Remark}
     \newtheorem*{notation}{Notation}
+    \theoremstyle{mytheorem}
+    \newtheorem*{proposition*}{Proposition}
+    \newtheorem*{theorem*}{Theorem}
+    \newtheorem*{corollary*}{Corollary}
+    \newtheorem*{lemma*}{Lemma}
     % proof environment
     \newcommand{\blacksquare}{■}
     \renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
