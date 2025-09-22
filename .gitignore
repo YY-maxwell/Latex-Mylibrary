@@ -1,0 +1,14 @@
+# LaTex build files
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# PDF output
+*.pdf
+
+# macOS system files
+.DS_Store
