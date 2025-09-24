@@ -62,7 +62,7 @@
             separator sign none,
             fonttitle = \gtfamily\sffamily,
             before upper = {%
-                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle\textbf{.}}\;
+                \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
         }{def}
     }{% 
@@ -76,7 +76,7 @@
             separator sign none,
             fonttitle = \gtfamily\sffamily,
             before upper = {%
-                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle\textbf{.}}\;
+                \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
         }{def}
     }
@@ -131,7 +131,7 @@
     }
     % 証明環境
     \newcommand{\blacksquare}{■}
-    \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
+    \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
         proofstyle,
         line color = gray,

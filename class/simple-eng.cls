@@ -141,7 +141,7 @@
     \newtheorem*{lemma*}{Lemma}
     % proof environment
     \newcommand{\blacksquare}{■}
-    \renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
+    \renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
         proofstyle,
         line color = gray,

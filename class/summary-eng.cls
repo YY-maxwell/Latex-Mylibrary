@@ -136,7 +136,7 @@
     }
     % proof environment
     \newcommand{\blacksquare}{■}
-    \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{black}{$\blacksquare$}}}
+    \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newtcolorbox{proofbox}{
         proofstyle,
         line color = gray,
