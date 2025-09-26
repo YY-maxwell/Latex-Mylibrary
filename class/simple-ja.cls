@@ -137,20 +137,9 @@
         title = 記法
     }
     % 証明環境
-    \newcommand{\blacksquare}{■}
-    \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
-    \newtcolorbox{proofbox}{
-        proofstyle,
-        line color = gray,
-        fonttitle = \gtfamily,
-        title = {証明.},
-        before upper={
-            \hspace*{-14pt}\tcbtitle\;
-        }
-    }
     \newenvironment{myproof}{
-        \begin{proofbox}
+        \begin{proofbox}[\textgt{\textsf{証明.}}]
     }{
-        \hspace{.5em}\qedsymbol\end{proofbox}
+        \qedsymbol\end{proofbox}
     }
 }

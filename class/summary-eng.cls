@@ -135,21 +135,10 @@
         title = Notation.
     }
     % proof environment
-    \newcommand{\blacksquare}{■}
-    \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
-    \newtcolorbox{proofbox}{
-        proofstyle,
-        line color = gray,
-        fonttitle = \bfseries,
-        title = {Proof.},
-        before upper={
-            \hspace*{-14pt}\tcbtitle\;
-        }
-    }
     \newenvironment{myproof}{
         \begin{proofbox}
     }{
-        \hspace{.5em}\qedsymbol\end{proofbox}
+        \qedsymbol\end{proofbox}
     }
 }
 

@@ -61,3 +61,15 @@
         line color=gray,% default
     }
 }
+
+% proof environment
+\newcommand{\blacksquare}{■}
+\newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
+\newtcolorbox{proofbox}[1][\textbf{Proof.}]{
+    proofstyle,
+    line color = gray,
+    title = {#1},
+    before upper={
+        \hspace*{-15pt}\tcbtitle\;
+    }
+}
