@@ -138,6 +138,7 @@
     }
     % 証明環境
     \newenvironment{myproof}{
+        \vspace{-8pt}%
         \begin{proofbox}[\textgt{\textsf{証明.}}]
     }{
         \qedsymbol\end{proofbox}

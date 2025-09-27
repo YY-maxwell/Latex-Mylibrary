@@ -141,6 +141,7 @@
     \newtheorem*{lemma*}{Lemma}
     % proof environment
     \newenvironment{myproof}{
+        \vspace{-5pt}%
         \begin{proofbox}
     }{
         \qedsymbol\end{proofbox}
