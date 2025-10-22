@@ -5,16 +5,18 @@
 % --- Options ---
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{family=summary,prefix=summary@}
-\DeclareStringOption[section]{eqnumbering}
-\DeclareStringOption[section]{thmnumbering}
+\DeclareStringOption[global]{eqnumbering}
+\DeclareStringOption[global]{thmnumbering}
 \ProcessKeyvalOptions*
 
 
 % --- These \DeclareOption lines mark eqnumbering/thmnumbering as
 %     “handled here” so they will not be forwarded to the parent class
 %     (article). This prevents unknown option warnings from article. -------------
+\DeclareOption{eqnumbering=global}{}
 \DeclareOption{eqnumbering=section}{}
 \DeclareOption{eqnumbering=subsection}{}
+\DeclareOption{thmnumbering=global}{}
 \DeclareOption{thmnumbering=section}{}
 \DeclareOption{thmnumbering=subsection}{}
 
@@ -39,7 +41,7 @@
 
 % --- numbering systems for equation and theorem ---
 \mathtoolsset{showonlyrefs=true}% Number only equations that are actually referenced later
-\newcounter{theorem}
+%\newcounter{theorem}
 \newtheoremstyle{mytheorem}
     {10pt}   % space above
     {10pt}   % space below
@@ -67,23 +69,28 @@
         \numberwithin{equation}{section}
         \renewcommand{\theequation}{\thesection.\arabic{equation}}
     }{%
+    \ifdefstring{\summary@eqnumbering}{subsection}{
         \numberwithin{equation}{subsection}
         \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+    }{% else: default is like (1)...
+        \@ifundefined{c@equation}{\newcounter{equation}}{}%
+        \renewcommand{\theequation}{\arabic{equation}}
+    }
     }%
     % definition/theorem numbering
-    \ifdefstring{\summary@thmnumbering}{section}{%
-        % if thmnumbering=section
-        \@addtoreset{theorem}{section}
-        \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
+    \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
         % define theorem environments
-        \theoremstyle{mydefinition}
-        \newtheorem{innerdefinition}{Definition}[section]
-    }{% if thmnumbering=subsection
-        \@addtoreset{theorem}{section}
-        \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
+            \theoremstyle{mydefinition}
+            \newtheorem{innerdefinition}{Definition}[section]
+    }{%
+    \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
         % define theorem environments
+            \theoremstyle{mydefinition}
+            \newtheorem{innerdefinition}{Definition}[subsection]
+    }{% else: default is like "Definition 1"
         \theoremstyle{mydefinition}
-        \newtheorem{innerdefinition}{Definition}[subsection]
+        \newtheorem{innerdefinition}{Definition}
+    }
     }
     \theoremstyle{mytheorem}
     \newtheorem{innertheorem}[innerdefinition]{Theorem}

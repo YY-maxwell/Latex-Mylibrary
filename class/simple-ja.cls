@@ -5,16 +5,18 @@
 % --- Options ---
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{family=summary,prefix=summary@}
-\DeclareStringOption[section]{eqnumbering}
-\DeclareStringOption[section]{thmnumbering}
+\DeclareStringOption[global]{eqnumbering}
+\DeclareStringOption[global]{thmnumbering}
 \ProcessKeyvalOptions*
 
 
 % --- These \DeclareOption lines mark eqnumbering/thmnumbering as
 %     “handled here” so they will not be forwarded to the parent class
 %     (article). This prevents unknown option warnings from article. -------------
+\DeclareOption{eqnumbering=global}{}
 \DeclareOption{eqnumbering=section}{}
 \DeclareOption{eqnumbering=subsection}{}
+\DeclareOption{thmnumbering=global}{}
 \DeclareOption{thmnumbering=section}{}
 \DeclareOption{thmnumbering=subsection}{}
 
@@ -38,7 +40,7 @@
 
 % ---------- 定理環境，数式・定理番号の設定 -----------------------------------------------------
 \mathtoolsset{showonlyrefs=true}% 数式環境の中で，のちに参照するもののみ番号を振る設定
-\newcounter{theorem}
+% \newcounter{theorem}
 \AtEndOfClass{%
     \makeatletter
     % 数式番号の設定
@@ -46,14 +48,16 @@
         \numberwithin{equation}{section}
         \renewcommand{\theequation}{\thesection.\arabic{equation}}
     }{%
+    \ifdefstring{\summary@eqnumbering}{subsection}{%
         \numberwithin{equation}{subsection}
         \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
+    }{%
+        \@ifundefined{c@equation}{\newcounter{equation}}{}%
+        \renewcommand{\theequation}{\arabic{equation}}
+    }%
     }%
     % 定理番号・定理環境の設定
-    \ifdefstring{\summary@thmnumbering}{section}{%
-        % if thmnumbering=section
-        \@addtoreset{theorem}{section}
-        \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
+    \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
         % 定義環境
         \newtcbtheorem[number within=section]{definition}{定義}{
             plain,
@@ -63,10 +67,8 @@
                 \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
         }{def} 
-    }{% 
-        % if thmnumbering=subsection
-        \@addtoreset{theorem}{subsection}
-        \renewcommand{\thetheorem}{\thesubsection.\arabic{theorem}}
+    }{%
+    \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
         % 定義環境
         \newtcbtheorem[number within=subsection]{definition}{定義}{
             plain,
@@ -75,9 +77,20 @@
             before upper = {%
                 \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
-        }{def} 
-    }
+        }{def}
+    }{% else default
+        \newtcbtheorem{definition}{定義}{
+            plain,
+            separator sign = {.},
+            fonttitle = \gtfamily\sffamily,
+            before upper = {%
+                \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
+            },
+        }{def}%
+    }%
+    }%
     \makeatother
+
     % 定理環境の設定（定義環境は上ですでに設定済み）
     \newtcbtheorem[use counter from=definition]{theorem}{定理}{
         plain,
@@ -87,7 +100,6 @@
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
     }{thm}
-
     \newtcbtheorem[use counter from=definition]{lemma}{補題}{
         plain,
         separator sign ={.},
@@ -138,7 +150,7 @@
     }
     % 証明環境
     \newenvironment{myproof}{
-        \vspace{-8pt}%
+        %\vspace{-8pt}%
         \begin{proofbox}[\textgt{\textsf{証明.}}]
     }{
         \qedsymbol\end{proofbox}
