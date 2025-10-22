@@ -38,26 +38,26 @@
 
 
 % --- numbering systems for equation and theorem ---
-\mathtoolsset{showonlyrefs=true}% 数式環境の中で，のちに参照するもののみ番号を振る設定
+\mathtoolsset{showonlyrefs=true}% Number only equations that are actually referenced later
 \newcounter{theorem}
 \newtheoremstyle{mytheorem}
-    {10pt}   % 上のスペース
-    {10pt}   % 下のスペース
-    {\itshape} % 本文フォント
-    {}      % インデント
-    {\bfseries} % タイトルフォント ← ここを変える
-    {.}     % 見出し後の句読点
-    { }     % 見出しと本文の間のスペース
-    {}      % 見出しの仕様
+    {10pt}   % space above
+    {10pt}   % space below
+    {\itshape} % body font
+    {}      % indent amount
+    {\bfseries} % title font
+    {.}     % Punctuation after theorem head
+    { }     % Space after theorem head
+    {}      % Theorem head specification
 \newtheoremstyle{mydefinition}
-    {10pt}   % 上のスペース
-    {15pt}   % 下のスペース
-    {} % 本文フォント
-    {}      % インデント
-    {\bfseries} % タイトルフォント ← ここを変える
-    {.}     % 見出し後の句読点
-    { }     % 見出しと本文の間のスペース
-    {}      % 見出しの仕様
+    {10pt}      % Space above
+    {15pt}      % Space below
+    {}          % Body font
+    {}          % Indent amount
+    {\bfseries} % Theorem head font ← you can modify this
+    {.}         % Punctuation after theorem head
+    { }         % Space after theorem head
+    {}          % Theorem head specification
 
 \RequirePackage{xparse}% https://chatgpt.com/share/68ca31c6-1b1c-8005-bb51-5f78aa912d62
 \AtEndOfClass{%
