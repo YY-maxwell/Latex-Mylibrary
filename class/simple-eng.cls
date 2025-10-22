@@ -81,9 +81,9 @@
     }{% if thmnumbering=subsection
         \@addtoreset{theorem}{section}
         \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
-            % define theorem environments
-            \theoremstyle{mydefinition}
-            \newtheorem{innerdefinition}{Definition}[subsection]
+        % define theorem environments
+        \theoremstyle{mydefinition}
+        \newtheorem{innerdefinition}{Definition}[subsection]
     }
     \theoremstyle{mytheorem}
     \newtheorem{innertheorem}[innerdefinition]{Theorem}
