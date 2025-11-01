@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{simple-ja}[2025/09/18 Simple class for summary notes]
+\ProvidesClass{jysimple}[2025/09/18 Simple class for summary notes]
 
 
 % --- Options ---

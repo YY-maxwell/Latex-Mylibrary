@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{simple-eng}[2025/09/18 Simple class for summary notes]
+\ProvidesClass{ysimple}[2025/09/18 Simple class for summary notes]
 
 
 % --- Options ---
