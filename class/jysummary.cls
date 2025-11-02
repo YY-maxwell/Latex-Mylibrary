@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{summary-ja}[2025/09/18 Simple class for summary notes]
+\ProvidesClass{jysummary}[2025/09/18 Simple class for summary notes]
 
 
 % --- Options ---
@@ -61,34 +61,34 @@
     \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
         % 定義環境
         \newtcbtheorem[number within=section]{definition}{定義}{
-            proofstyle,
-            line color = black,
+            westruled,
+            %line color = black,
             separator sign none,
-            fonttitle = \gtfamily\sffamily,
+            fonttitle = \bfseries,
             before upper = {%
-                \hspace*{-14pt}\tcbtitle\textbf{.}\;
+                \tcbtitle\textbf{.}\;
             },
         }{def}
     }{%
     \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
         % 定義環境
         \newtcbtheorem[number within=subsection]{definition}{定義}{
-            proofstyle,
-            line color = black,
+            westruled,
+            %line color = black,
             separator sign none,
-            fonttitle = \gtfamily\sffamily,
+            fonttitle = \bfseries,
             before upper = {%
-                \hspace*{-14pt}\tcbtitle\textbf{.}\;
+                \tcbtitle\textbf{.}\;
             },
         }{def}
     }{%
         \newtcbtheorem{definition}{定義}{
-            proofstyle,
-            line color = black,
+            westruled,
+            %line color = black,
             separator sign none,
-            fonttitle = \gtfamily\sffamily,
+            fonttitle = \bfseries,
             before upper = {%
-                \hspace*{-14pt}\tcbtitle\textbf{.}\;
+                \tcbtitle\textbf{.}\;
             },
         }{def}
     }%
@@ -99,27 +99,27 @@
     \newtcbtheorem[use counter from=definition]{theorem}{定理}{
         simpleboxed,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily
+        fonttitle = \bfseries
     }{thm}
     \newtcbtheorem[use counter from=definition]{lemma}{補題}{
         simpleboxed,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily
+        fonttitle = \bfseries
     }{lem}
     \newtcbtheorem[use counter from=definition]{corollary}{系}{
         simpleboxed,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily
+        fonttitle = \bfseries
     }{cor}
     \newtcbtheorem[use counter from=definition]{proposition}{命題}{
         simpleboxed,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily
+        fonttitle = \bfseries
     }{prop}
     \newtcbtheorem[use counter from=definition]{example}{例}{
         plain,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily,
+        fonttitle = \bfseries,
         before upper={
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
@@ -127,7 +127,7 @@
     \newtcolorbox{remark}{
         plain,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily,
+        fonttitle = \bfseries,
         before upper={
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
@@ -136,7 +136,7 @@
     \newtcolorbox{notation}{
         plain,
         separator sign ={.},
-        fonttitle = \sffamily\gtfamily,
+        fonttitle = \bfseries,
         before upper={
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
