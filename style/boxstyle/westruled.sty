@@ -15,8 +15,10 @@
         before skip = 5pt,  % ← 上の余白
         after skip = 5pt,   % ← 下の余白
         overlay = {
-            \draw[black, line width=1pt]
-            ([xshift=-2mm]interior.south west) -- ([xshift=-2mm]interior.north west); 
-        }
+            \draw[\tcbcol@overlay, line width=2pt]
+            ([xshift=0mm]interior.south west) -- ([xshift=0mm]interior.north west); 
+        },
+        line color/.store in=\tcbcol@overlay,
+        line color=gray,% default
     }
 }
