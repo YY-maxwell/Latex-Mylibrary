@@ -52,6 +52,22 @@
     \draw[line width=0.45pt] (0.065, 0.01) to [out=-180, in=30] (0,0);
     \end{tikzpicture}
 }
+\newcommand{\dashrightarrow}{% dashed right arrow
+    \mathrel{%
+        \tikz[baseline=-0.5ex]{%
+            \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
+            (0,0) -- (1em,0);
+        }
+    }
+}
+\newcommand{\dashleftarrow}{% dashed left arrow
+    \mathrel{%
+        \tikz[baseline=-0.5ex]{%
+            \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
+            (0,0) -- (-1em,0);
+        }
+    }
+}
 
 
 % --- calligraphic letters ---
