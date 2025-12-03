@@ -21,11 +21,11 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-\renewcommand{\Box}{▢}
-\AtBeginDocument{%
-    \renewcommand{\Re}{\operatorname{Re}}%
-    \renewcommand{\Im}{\operatorname{Im}}%
-}
+% \renewcommand{\Box}{◻︎}
+% \AtBeginDocument{%
+%     \renewcommand{\Re}{\operatorname{Re}}%
+%     \renewcommand{\Im}{\operatorname{Im}}%
+% }
 
 % --- categorical notations ---
 \newcommand{\Set}{\mathscr{S}\hspace{-0.75pt}et}
@@ -43,39 +43,39 @@
 
 % --- arrows ---
 \newcommand{\ri}{\longrightarrow}
-\newcommand{\mono}{\hookrightarrow}% mono (injection)
+\newcommand{\mono}{\rightarrowtail}% mono (injection)
 \newcommand{\epi}{\twoheadrightarrow}% epi (surjection)
-\newcommand{\circlearrowright}{% circular arrow for commutativity
-    \begin{tikzpicture}
-    \draw[line width=0.45pt] (0,0) arc[radius=0.12, start angle=-50, end angle=280];
-    \draw[line width=0.45pt] (-0.01, 0.07) to [out=-65, in=75] (0,0);
-    \draw[line width=0.45pt] (0.065, 0.01) to [out=-180, in=30] (0,0);
-    \end{tikzpicture}
-}
-\newcommand{\dashrightarrow}{% dashed right arrow
-    \mathrel{%
-        \tikz[baseline=-0.5ex]{%
-            \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
-            (0,0) -- (1em,0);
-        }
-    }
-}
-\newcommand{\dashleftarrow}{% dashed left arrow
-    \mathrel{%
-        \tikz[baseline=-0.5ex]{%
-            \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
-            (0,0) -- (-1em,0);
-        }
-    }
-}
-\newcommand{\longdashrightarrow}{
-    \mathrel{
-        \tikz[baseline=-0.5ex]{
-            \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
-            (0,0) -- (1.5em,0);
-        }
-    }
-}
+% \newcommand{\circlearrowright}{% circular arrow for commutativity
+%     \begin{tikzpicture}
+%     \draw[line width=0.45pt] (0,0) arc[radius=0.12, start angle=-50, end angle=280];
+%     \draw[line width=0.45pt] (-0.01, 0.07) to [out=-65, in=75] (0,0);
+%     \draw[line width=0.45pt] (0.065, 0.01) to [out=-180, in=30] (0,0);
+%     \end{tikzpicture}
+% }
+% \newcommand{\dashrightarrow}{% dashed right arrow
+%     \mathrel{%
+%         \tikz[baseline=-0.5ex]{%
+%             \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
+%             (0,0) -- (1em,0);
+%         }
+%     }
+% }
+% \newcommand{\dashleftarrow}{% dashed left arrow
+%     \mathrel{%
+%         \tikz[baseline=-0.5ex]{%
+%             \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
+%             (0,0) -- (-1em,0);
+%         }
+%     }
+% }
+% \newcommand{\longdashrightarrow}{
+%     \mathrel{
+%         \tikz[baseline=-0.5ex]{
+%             \draw[->, dashed, line width=0.5pt, dash pattern={on 0.2em off 0.2em}]
+%             (0,0) -- (1.5em,0);
+%         }
+%     }
+% }
 
 
 % --- calligraphic letters ---
