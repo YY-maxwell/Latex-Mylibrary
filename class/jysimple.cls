@@ -66,6 +66,8 @@
             before upper = {%
                 \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
+            before skip=12pt,
+            after skip=12pt
         }{def} 
     }{%
     \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
@@ -77,6 +79,8 @@
             before upper = {%
                 \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
+            before skip=12pt,
+            after skip=12pt
         }{def}
     }{% else default
         \newtcbtheorem{definition}{定義}{
@@ -86,6 +90,8 @@
             before upper = {%
                 \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
+            before skip=12pt,
+            after skip=12pt
         }{def}%
     }%
     }%
@@ -99,6 +105,8 @@
         before upper = {%
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
+        before skip=12pt,
+        after skip=12pt
     }{thm}
     \newtcbtheorem[use counter from=definition]{lemma}{補題}{
         plain,
@@ -107,6 +115,8 @@
         before upper = {%
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         }, 
+        before skip=12pt,
+        after skip=12pt
     }{lem}
     \newtcbtheorem[use counter from=definition]{corollary}{系}{
         plain,
@@ -115,6 +125,8 @@
         before upper = {%
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
+        before skip=12pt,
+        after skip=12pt
     }{cor}
     \newtcbtheorem[use counter from=definition]{proposition}{命題}{
         plain,
@@ -123,6 +135,8 @@
         before upper = {%
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
+        before skip=12pt,
+        after skip=12pt
     }{prop}
     \newtcbtheorem[use counter from=definition]{example}{例}{
         plain,
@@ -131,6 +145,8 @@
         before upper={
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
+        before skip=12pt,
+        after skip=12pt
     }{ex}
     \newtcolorbox{remark}{
         plain,
@@ -150,8 +166,8 @@
     }
     % 証明環境
     \newenvironment{myproof}{
-        %\vspace{-8pt}%
-        \begin{proofbox}[\textgt{\textsf{証明.}}]
+        \vspace{-20pt}%
+        \begin{proofbox}[証明.]
     }{
         \qedsymbol\end{proofbox}
     }
