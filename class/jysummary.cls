@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{jysummary}[2025/09/18 Simple class for summary notes]
+\ProvidesClass{jysummary}[2025/09/18 定義環境は左隅に縦線, 定理環境は枠で囲まれる]
 
 
 % --- Options ---
