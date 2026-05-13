@@ -179,3 +179,18 @@
 \newcommand{\GG}{\mathbb{G}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\KK}{\mathbb{K}}
+
+% --- underline command with adjustable vertical position --- %
+% Usage: \myunderline[0.6pt]{hogehoge}
+\RequirePackage{xfp} % ← 数値演算のために必要！
+\newcommand{\myunderline}[2][0.4pt]{%
+    \begingroup
+        \edef\linewidthval{#1}%
+        \edef\yshiftval{\fpeval{#1/2}}%
+        \tikz[baseline=(X.base)]{
+            \node[inner sep=0pt, outer sep=0pt, anchor=base] (X) {#2};
+            \draw[line width=\linewidthval]
+            ([yshift=-\yshiftval-1 pt]X.south west) -- ([yshift=- \yshiftval-1 pt]X.south east);
+        }%
+    \endgroup
+}
