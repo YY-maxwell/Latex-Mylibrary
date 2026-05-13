@@ -194,3 +194,21 @@
         }%
     \endgroup
 }
+
+% --- indented environment for explicit conditions --- %
+\RequirePackage{setspace}
+\newenvironment{condition}
+    {\list{}{%
+        \setlength{\leftmargin}{2em}% Left margin
+        \setlength{\rightmargin}{2em}% Right margin
+        \setlength{\topsep}{5pt}% Vertical space
+        \setlength{\partopsep}{0pt}%
+        \setlength{\parsep}{0pt}%
+        \setlength{\itemsep}{0pt}%
+        \setlength{\itemindent}{0pt}%
+        \setlength{\listparindent}{0pt}%
+    }%
+    \item\relax
+    \setlength{\parindent}{0pt}%
+    \setstretch{0.95}}
+    {\endlist}
