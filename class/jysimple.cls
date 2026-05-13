@@ -164,7 +164,9 @@
         },
         title = 記法
     }
-    % 証明環境
+
+    % --- 証明環境 --- %
+\newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
         \vspace{-20pt}%
         \begin{proofbox}[証明.]

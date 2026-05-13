@@ -142,7 +142,9 @@
         },
         title = 記法
     }
-    % 証明環境
+
+% --- 証明環境 --- %
+\newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
         \begin{proofbox}[\textgt{\textsf{証明.}}]
     }{

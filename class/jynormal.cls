@@ -144,6 +144,7 @@
     \newtheorem*{lemma*}{補題}
 
 % --- 証明環境 --- %
+\renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}% amsthmによって，すでにqedsymbolが定義されてしまっているのでrenewcommand
     \newenvironment{myproof}{
         \vspace{-10pt}%
         \begin{proofbox}[証明.]

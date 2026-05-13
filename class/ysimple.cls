@@ -146,7 +146,9 @@
     \newtheorem*{theorem*}{Theorem}
     \newtheorem*{corollary*}{Corollary}
     \newtheorem*{lemma*}{Lemma}
-    % proof environment
+
+% --- proof environment --- %
+\renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}% qedsymble command is already defined in amsthm
     \newenvironment{myproof}{
         \vspace{-5pt}%
         \begin{proofbox}

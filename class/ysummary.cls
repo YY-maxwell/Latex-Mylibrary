@@ -145,7 +145,9 @@
         },
         title = Notation.
     }
-    % proof environment
+
+% --- proof environment --- %
+\newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
         \begin{proofbox}
     }{
