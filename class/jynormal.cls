@@ -53,21 +53,20 @@
     }
     }
     % --- 定理番号・定理環境の設定 --- %
-    \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
     % 定義環境
+    \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
         \newtcbtheorem[number within=section]{definition}{定義}{
             normal,
             separator sign ={.},
             fonttitle = \gtfamily\sffamily,
-            before upper = {%
+            before upper = {
                 \myunderline[0.6pt]{\tcbtitle.}\;
             },
             before skip=12pt,
             after skip=12pt
         }{def} 
-    }{%
+    }{
     \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
-    % 定義環境
         \newtcbtheorem[number within=subsection]{definition}{定義}{
             normal,
             separator sign = {.},
@@ -164,7 +163,7 @@
 % --- 証明環境 --- %
 \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
-        \vspace{-12pt}%
+        \vspace{-12pt}
         \begin{proofbox}[{\myunderline[0.4pt]{証明.}}]
     }{
         \qedsymbol\end{proofbox}
