@@ -38,25 +38,25 @@
 \RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled, boxstyle/proofstyle}
 \RequirePackage{hyperlinks}
 
-% ---------- 定理環境，数式・定理番号の設定 -----------------------------------------------------
+% --- 定理環境，数式・定理番号の設定 --- %
 \mathtoolsset{showonlyrefs=true}% 数式環境の中で，のちに参照するもののみ番号を振る設定
-% \newcounter{theorem}
+
 \AtEndOfClass{%
     \makeatletter
-    % 数式番号の設定
-    \ifdefstring{\summary@eqnumbering}{section}{%
+    % --- 数式番号の設定 --- %
+    \ifdefstring{\summary@eqnumbering}{section}{
         \numberwithin{equation}{section}
         \renewcommand{\theequation}{\thesection.\arabic{equation}}
-    }{%
-    \ifdefstring{\summary@eqnumbering}{subsection}{%
+    }{
+    \ifdefstring{\summary@eqnumbering}{subsection}{
         \numberwithin{equation}{subsection}
         \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
-    }{%
-        \@ifundefined{c@equation}{\newcounter{equation}}{}%
+    }{
+        \@ifundefined{c@equation}{\newcounter{equation}}{}
         \renewcommand{\theequation}{\arabic{equation}}
-    }%
-    }%
-    % 定理番号・定理環境の設定
+    }
+    }
+    % --- 定理番号・定理環境の設定 --- %
     \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
         % 定義環境
         \newtcbtheorem[number within=section]{definition}{定義}{
@@ -69,7 +69,7 @@
             before skip=12pt,
             after skip=12pt
         }{def} 
-    }{%
+    }{
     \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
         % 定義環境
         \newtcbtheorem[number within=subsection]{definition}{定義}{
@@ -87,14 +87,14 @@
             plain,
             separator sign = {.},
             fonttitle = \gtfamily\sffamily,
-            before upper = {%
+            before upper = {
                 \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
             },
             before skip=12pt,
             after skip=12pt
-        }{def}%
-    }%
-    }%
+        }{def}
+    }
+    }
     \makeatother
 
     % 定理環境の設定（定義環境は上ですでに設定済み）
@@ -102,7 +102,7 @@
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
-        before upper = {%
+        before upper = {
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         before skip=12pt,
@@ -112,7 +112,7 @@
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
-        before upper = {%
+        before upper = {
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         }, 
         before skip=12pt,
@@ -122,7 +122,7 @@
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
-        before upper = {%
+        before upper = {
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         before skip=12pt,
@@ -132,7 +132,7 @@
         plain,
         separator sign ={.},
         fonttitle = \sffamily\gtfamily,
-        before upper = {%
+        before upper = {
             \hspace*{-14pt}\myunderline[0.6pt]{\tcbtitle.}\;
         },
         before skip=12pt,
@@ -165,11 +165,11 @@
         title = 記法
     }
 
-    % --- 証明環境 --- %
+% --- 証明環境 --- %
 \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
-        \vspace{-20pt}%
-        \begin{proofbox}[証明.]
+        \vspace{-20pt}
+        \begin{proofbox}[{\myunderline[0.3pt]{証明.}}]
     }{
         \qedsymbol\end{proofbox}
     }
