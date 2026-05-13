@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ysummary}[2025/09/18 for summary notes]
+\ProvidesClass{yboxed}[2025/09/18 ]
 
 
 % --- Options ---
@@ -12,7 +12,7 @@
 
 % --- These \DeclareOption lines mark eqnumbering/thmnumbering as
 %     “handled here” so they will not be forwarded to the parent class
-%     (article). This prevents unknown option warnings from article. -------------
+%     (article). This prevents unknown option warnings from article. ---
 \DeclareOption{eqnumbering=global}{}
 \DeclareOption{eqnumbering=section}{}
 \DeclareOption{eqnumbering=subsection}{}
@@ -37,28 +37,27 @@
 \RequirePackage{boxstyle/hruled, boxstyle/plain, boxstyle/simpleboxed, boxstyle/westruled, boxstyle/proofstyle}
 \RequirePackage{hyperlinks}
 
-% --- numbering systems for equation and theorem ---------------------------------
+% --- numbering systems for equation and theorem ---
 \mathtoolsset{showonlyrefs=true}% 数式環境の中で，のちに参照するもののみ番号を振る設定
-% \newcounter{theorem}
-\AtEndOfClass{%
+
+\AtEndOfClass{
     \makeatletter
     % equation numbering
-    \ifdefstring{\summary@eqnumbering}{section}{%
+    \ifdefstring{\summary@eqnumbering}{section}{
         \numberwithin{equation}{section}
         \renewcommand{\theequation}{\thesection.\arabic{equation}}
-    }{%
+    }{
     \ifdefstring{\summary@eqnumbering}{subsection}{
         \numberwithin{equation}{subsection}
         \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
     }{% else: default is like (1)...
         \@ifundefined{c@equation}{\newcounter{equation}}{}%
         \renewcommand{\theequation}{\arabic{equation}}
-    }%
-    }%
+    }
+    }
 
     % definition/theorem numbering
     \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
-        % define definition environments
         \newtcbtheorem[number within=section]{definition}{Definition}{
             proofstyle,
             line color = black,
@@ -68,15 +67,14 @@
                 \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
         }{def}
-    }{%
+    }{
     \ifdefstring{\summary@thmnumbering}{subsection}{%if thmnumbering=subsection
-        % define definition environments
         \newtcbtheorem[number within=subsection]{definition}{Definition}{
             proofstyle,
             line color = black,
             separator sign none,
             fonttitle = \bfseries,
-            before upper = {%
+            before upper = {
                 \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
         }{def}
@@ -86,15 +84,15 @@
             line color = black,
             separator sign none,
             fonttitle = \bfseries,
-            before upper = {%
+            before upper = {
                 \hspace*{-14pt}\tcbtitle\textbf{.}\;
             },
-        }{def}%
+        }{def}
     }
-    }%
+    }
     \makeatother
 
-    % define theorem environments (only definition environment is defined above)
+    % define theorem environments
     \newtcbtheorem[use counter from=definition]{theorem}{Theorem}{
         simpleboxed,
         separator sign none,
