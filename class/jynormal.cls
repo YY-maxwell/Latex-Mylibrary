@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{jynormal}[2026/05/13 日本語survay用のクラス]
+\ProvidesClass{jynormal}[2026/05/13 amsthmのレイアウトを踏襲, 定義・定理の見出しに下線, 日本語survey用]
 
 % --- オプション --- %
 \RequirePackage{kvoptions}
@@ -25,43 +25,21 @@
 
 % --- パッケージ --- %
 \RequirePackage{etoolbox}% for eq/thm numbering
-\RequirePackage{amsthm}% theorem/proof environments
 % user-defined
 \RequirePackage{base-packages}
 \RequirePackage{macros}
 \RequirePackage{font-ja}
 \RequirePackage{layout/page-margins,layout/head-foot}
 \RequirePackage{toc/toc-ja}
-\RequirePackage{boxstyle/proofstyle}
+\RequirePackage{boxstyle/proofstyle, boxstyle/normal}
 \RequirePackage{hyperlinks}
 
 % --- 定理環境，数式・定理番号の設定 --- %
 \mathtoolsset{showonlyrefs=true}% 数式環境の中で，のちに参照するもののみ番号を振る設定
-\newtheoremstyle{mytheorem}% クラスのオプション引数によらない定義環境
-    {15pt}   % space above
-    {15pt}   % space below
-    {} % body font
-    {}      % indent amount
-    {\bfseries} % title font
-    {.}     % Punctuation after theorem head
-    { }     % Space after theorem head
-    {}      % Theorem head specification
-\newtheoremstyle{mydefinition}
-    {15pt}      % space above
-    {15pt}      % space below
-    {}          % body font
-    {}          % indent amount
-    {\bfseries} % theorem head font ← you can modify this
-    {.}         % punctuation after theorem head
-    { }         % space after theorem head
-    {}          % theorem head specification
 
-
-\RequirePackage{xparse}% https://chatgpt.com/share/68ca31c6-1b1c-8005-bb51-5f78aa912d62
-\AtEndOfClass{%
-    \makeatletter%
-
-% --- 数式番号の設定 --- %
+\AtEndOfClass{
+    \makeatletter
+    % --- 式番号の設定 --- %
     \ifdefstring{\summary@eqnumbering}{section}{
         \numberwithin{equation}{section}
         \renewcommand{\theequation}{\thesection.\arabic{equation}}
@@ -74,80 +52,120 @@
         \renewcommand{\theequation}{\arabic{equation}}
     }
     }
-
-% --- 定義・定理番号と環境の設定 --- %
-    \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section → 定義 1.1.
-            \theoremstyle{mydefinition}
-            \newtheorem{innerdefinition}{定義}[section]
+    % --- 定理番号・定理環境の設定 --- %
+    \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
+    % 定義環境
+        \newtcbtheorem[number within=section]{definition}{定義}{
+            normal,
+            separator sign ={.},
+            fonttitle = \gtfamily\sffamily,
+            before upper = {%
+                \myunderline[0.6pt]{\tcbtitle.}\;
+            },
+            before skip=12pt,
+            after skip=12pt
+        }{def} 
     }{%
-    \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection → 定義 1.1.1.
-            \theoremstyle{mydefinition}
-            \newtheorem{innerdefinition}{定義}[subsection]
-    }{% else: default is like 定義 1.
-        \theoremstyle{mydefinition}
-        \newtheorem{innerdefinition}{定義}
+    \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
+    % 定義環境
+        \newtcbtheorem[number within=subsection]{definition}{定義}{
+            normal,
+            separator sign = {.},
+            fonttitle = \gtfamily\sffamily,
+            before upper = {
+                \myunderline[0.6pt]{\tcbtitle.}\;
+            },
+            before skip=12pt,
+            after skip=12pt
+        }{def}
+    }{% else default
+        \newtcbtheorem{definition}{定義}{
+            normal,
+            separator sign = {.},
+            fonttitle = \gtfamily\sffamily,
+            before upper = {%
+                \myunderline[0.6pt]{\tcbtitle.}\;
+            },
+            before skip=12pt,
+            after skip=12pt
+        }{def}
     }
-    }
-    \theoremstyle{mytheorem}
-    \newtheorem{innertheorem}[innerdefinition]{定理}
-    \newtheorem{innerproposition}[innerdefinition]{命題}
-    \newtheorem{innerlemma}[innerdefinition]{補題}
-    \newtheorem{innercorollary}[innerdefinition]{系}
-    \theoremstyle{mydefinition}
-    \newtheorem{innerexample}[innerdefinition]{例}
-
-    \NewDocumentEnvironment{definition}{mm}{
-        \begin{innerdefinition}[#1]
-        \ifstrempty{#2}{\label{def:\theinnerdefinition}}{\label{def:#2}}
-    }{
-        \end{innerdefinition}
-    }
-    \NewDocumentEnvironment{theorem}{mm}{
-        \begin{innertheorem}[#1]
-        \ifstrempty{#2}{\label{thm:\theinnerdefinition}}{\label{thm:#2}}
-    }{
-        \end{innertheorem}
-    }
-    \NewDocumentEnvironment{proposition}{mm}{
-        \begin{innerproposition}[#1]
-        \ifstrempty{#2}{\label{prop:\theinnerdefinition}}{\label{prop:#2}}
-    }{
-        \end{innerproposition}
-    }
-    \NewDocumentEnvironment{lemma}{mm}{
-        \begin{innerlemma}[#1]
-        \ifstrempty{#2}{\label{lem:\theinnerdefinition}}{\label{lem:#2}}
-    }{
-        \end{innerlemma}
-    }
-    \NewDocumentEnvironment{corollary}{mm}{
-        \begin{innercorollary}[#1]
-        \ifstrempty{#2}{\label{cor:\theinnerdefinition}}{\label{cor:#2}}
-    }{
-        \end{innercorollary}
-    }
-    \NewDocumentEnvironment{example}{mm}{
-        \begin{innerexample}[#1]
-        \ifstrempty{#2}{\label{ex:\theinnerdefinition}}{\label{ex:#2}}
-    }{
-        \end{innerexample}
     }
     \makeatother
-    \theoremstyle{mydefinition}
-    \newtheorem*{definition*}{定義}
-    \newtheorem*{remark}{注意}
-    \newtheorem*{notation}{記法}
-    \theoremstyle{mytheorem}
-    \newtheorem*{proposition*}{命題}
-    \newtheorem*{theorem*}{定理}
-    \newtheorem*{corollary*}{系}
-    \newtheorem*{lemma*}{補題}
+
+    % その他の定理環境の設定（定義環境は上ですでに設定済み）
+    \newtcbtheorem[use counter from=definition]{theorem}{定理}{
+        normal,
+        separator sign ={.},
+        fonttitle = \sffamily\gtfamily,
+        before upper = {%
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        },
+        before skip=12pt,
+        after skip=12pt
+    }{thm}
+    \newtcbtheorem[use counter from=definition]{lemma}{補題}{
+        normal,
+        separator sign ={.},
+        fonttitle = \sffamily\gtfamily,
+        before upper = {%
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        }, 
+        before skip=12pt,
+        after skip=12pt
+    }{lem}
+    \newtcbtheorem[use counter from=definition]{corollary}{系}{
+        normal,
+        separator sign ={.},
+        fonttitle = \sffamily\gtfamily,
+        before upper = {%
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        },
+        before skip=12pt,
+        after skip=12pt
+    }{cor}
+    \newtcbtheorem[use counter from=definition]{proposition}{命題}{
+        normal,
+        separator sign ={.},
+        fonttitle = \sffamily\gtfamily,
+        before upper = {%
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        },
+        before skip=12pt,
+        after skip=12pt
+    }{prop}
+    \newtcbtheorem[use counter from=definition]{example}{例}{
+        normal,
+        separator sign ={.},
+        fonttitle = \sffamily\gtfamily,
+        before upper={
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        },
+        before skip=12pt,
+        after skip=12pt
+    }{ex}
+    \newtcolorbox{remark}{
+        normal,
+        fonttitle = \gtfamily\sffamily,
+        before upper={
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        },
+        title = 注意
+    }
+    \newtcolorbox{notation}{
+        normal,
+        fonttitle = \sffamily\gtfamily,
+        before upper={
+            \myunderline[0.6pt]{\tcbtitle.}\;
+        },
+        title = 記法
+    }
 
 % --- 証明環境 --- %
-\renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}% amsthmによって，すでにqedsymbolが定義されてしまっているのでrenewcommand
+\newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
-        \vspace{-10pt}%
-        \begin{proofbox}[証明.]
+        \vspace{-12pt}%
+        \begin{proofbox}[{\myunderline[0.4pt]{証明.}}]
     }{
         \qedsymbol\end{proofbox}
     }
