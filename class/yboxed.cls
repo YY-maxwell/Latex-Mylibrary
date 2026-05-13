@@ -152,6 +152,3 @@
         \qedsymbol\end{proofbox}
     }
 }
-
-
-
