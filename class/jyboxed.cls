@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{jysummary}[2025/09/18 定義環境は左隅に縦線, 定理環境は枠で囲まれる]
+\ProvidesClass{jyboxed}[2025/09/18 定義環境は左隅に縦線, 定理環境は枠で囲まれる]
 
 
 % --- Options ---
@@ -41,61 +41,59 @@
 
 % --- 定理環境，数式・定理番号の設定 ---
 \mathtoolsset{showonlyrefs=true}% 数式環境の中で，のちに参照するもののみ番号を振る設定
-% \newcounter{theorem}
 \AtEndOfClass{%
     \makeatletter
-    % 数式番号の設定
-    \ifdefstring{\summary@eqnumbering}{section}{%
+    % --- 数式番号の設定 ---%
+    \ifdefstring{\summary@eqnumbering}{section}{
         \numberwithin{equation}{section}
         \renewcommand{\theequation}{\thesection.\arabic{equation}}
-    }{%
-    \ifdefstring{\summary@eqnumbering}{subsection}{%
+    }{
+    \ifdefstring{\summary@eqnumbering}{subsection}{
         \numberwithin{equation}{subsection}
         \renewcommand{\theequation}{\thesubsection.\arabic{equation}}
-    }{%
-        \@ifundefined{c@equation}{\newcounter{equation}}{}%
+    }{
+        \@ifundefined{c@equation}{\newcounter{equation}}{}
         \renewcommand{\theequation}{\arabic{equation}}
-    }%
-    }%
-    % 定理番号・定理環境の設定
+    }
+    }
+    % --- 定理番号・定理環境の設定 --- %
+    % 定義環境と番号
     \ifdefstring{\summary@thmnumbering}{section}{% if thmnumbering=section
-        % 定義環境
         \newtcbtheorem[number within=section]{definition}{定義}{
             westruled,
-            %line color = black,
+            line color = black,
             separator sign none,
             fonttitle = \bfseries,
-            before upper = {%
+            before upper = {
                 \tcbtitle\textbf{.}\;
             },
         }{def}
-    }{%
+    }{
     \ifdefstring{\summary@thmnumbering}{subsection}{% if thmnumbering=subsection
-        % 定義環境
         \newtcbtheorem[number within=subsection]{definition}{定義}{
             westruled,
-            %line color = black,
+            line color = black,
             separator sign none,
             fonttitle = \bfseries,
-            before upper = {%
+            before upper = {
                 \tcbtitle\textbf{.}\;
             },
         }{def}
     }{%
         \newtcbtheorem{definition}{定義}{
             westruled,
-            %line color = black,
+            line color = black,
             separator sign none,
             fonttitle = \bfseries,
-            before upper = {%
+            before upper = {
                 \tcbtitle\textbf{.}\;
             },
         }{def}
-    }%
-    }%
+    }
+    }
     \makeatother
 
-    % 定理環境の設定（定義環境は上ですでに設定済み）
+    % 定理環境
     \newtcbtheorem[use counter from=definition]{theorem}{定理}{
         simpleboxed,
         separator sign ={.},
