@@ -163,7 +163,7 @@
 % --- 証明環境 --- %
 \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
     \newenvironment{myproof}{
-        \vspace{-12pt}
+        \vspace{-16pt}
         \begin{proofbox}[{\myunderline[0.4pt]{証明.}}]
     }{
         \qedsymbol\end{proofbox}
