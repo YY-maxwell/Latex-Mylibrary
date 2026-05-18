@@ -165,9 +165,9 @@
 
 % --- 証明環境 --- %
 \newcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}
-    \newenvironment{myproof}{
+    \newenvironment{myproof}[1][{{\myunderline[0.4pt]{証明.}}}]{
         \vspace{-16pt}
-        \begin{proofbox}[{\myunderline[0.4pt]{証明.}}]
+        \begin{proofbox}[#1]
     }{
         \qedsymbol\end{proofbox}
     }
