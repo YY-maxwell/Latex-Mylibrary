@@ -62,6 +62,7 @@
             before upper = {
                 \myunderline[0.6pt]{\tcbtitle.}\;
             },
+            description formatter=\normalfont,
             before skip=12pt,
             after skip=12pt
         }{def} 
@@ -74,6 +75,7 @@
             before upper = {
                 \myunderline[0.6pt]{\tcbtitle.}\;
             },
+            description formatter=\normalfont,
             before skip=12pt,
             after skip=12pt
         }{def}
@@ -85,6 +87,7 @@
             before upper = {%
                 \myunderline[0.6pt]{\tcbtitle.}\;
             },
+            description formatter=\normalfont,
             before skip=12pt,
             after skip=12pt
         }{def}
