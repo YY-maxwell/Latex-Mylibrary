@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{boxstyle/proofstyle}[2025/05/10 westruled style]
-
+\newdimen\proofbox@linelength
 
 \tcbset{
     proofstyle/.style = {
@@ -16,11 +16,16 @@
         overlay unbroken={% ページまたぎがない場合
             \path let \p1 = ([xshift=0.5pt,yshift=-23pt]frame.north west),
                     \p2 = ([xshift=0.5pt,yshift= 7pt]frame.south west) in%
+                    %\n1 = {\y1-\y2} in
             \pgfextra{%
+                \proofbox@linelength=\dimexpr\y1-\y2\relax
+                \typeout{proofbox line length = \the\proofbox@linelength}%
                 \ifdim\y1>\y2\relax
-                    \draw[\tcbcol@overlay, line width=0.5pt]
-                    ([xshift=0.5pt,yshift=-23pt]frame.north west) --
-                    ([xshift=0.5pt,yshift= 7pt]frame.south west);
+                    \ifdim\proofbox@linelength>15pt\relax
+                        \draw[\tcbcol@overlay, line width=0.5pt]
+                        ([xshift=0.5pt,yshift=-23pt]frame.north west) --
+                        ([xshift=0.5pt,yshift= 7pt]frame.south west);
+                    \fi
                 \fi
             };%
         },
