@@ -1,46 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{macros}[2025/05/08 define fundamental macros]
 
-
-% --- some algebraic notations ---
-\DeclareMathOperator{\Ker}{Ker}
-\DeclareMathOperator{\Coker}{Coker}
-\DeclareMathOperator{\id}{id}% identity morphism
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\Proj}{Proj}
-\DeclareMathOperator{\Supp}{Supp}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\Div}{Div}
-\DeclareMathOperator{\Pic}{Pic}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Ext}{Ext}
-\DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\Sym}{Sym}
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-% \renewcommand{\Box}{◻︎}
-% \AtBeginDocument{%
-%     \renewcommand{\Re}{\operatorname{Re}}%
-%     \renewcommand{\Im}{\operatorname{Im}}%
-% }
-
-% --- categorical notations ---
-\newcommand{\Set}{\mathscr{S}\hspace{-0.75pt}et}
-\newcommand{\Top}{\mathscr{T}\hspace{-3pt}op}
-\newcommand{\Grp}{\mathscr{G}rp}
-\newcommand{\Ab}{\mathscr{A}b}
-\newcommand{\Cring}{\symscr{C}\hspace{-1pt}\symscr{R}ing}
-\newcommand{\Ring}{\mathscr{R}ing}
-\newcommand{\Rng}{\mathscr{R}ng}
-\newcommand{\Sch}{\mathscr{S}\hspace{-0.75pt}ch}
-\newcommand{\Mod}{\mathscr{M}\!od}
-\newcommand{\Coh}{\mathscr{C}\!oh}
-\newcommand{\QCoh}{\mathscr{QC}\!oh}
-
-
 % --- arrows ---
 \newcommand{\ri}{\longrightarrow}
 \newcommand{\mono}{\rightarrowtail}% mono (injection)
@@ -239,3 +199,43 @@
     \setlength{\parindent}{0pt}%
     \setstretch{0.95}}
     {\endlist}
+
+
+    % --- some algebraic notations ---
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\id}{id}% identity morphism
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% \renewcommand{\Box}{◻︎}
+% \AtBeginDocument{%
+%     \renewcommand{\Re}{\operatorname{Re}}%
+%     \renewcommand{\Im}{\operatorname{Im}}%
+% }
+
+% --- categorical notations ---
+\newcommand{\Set}{\mathscr{S}\hspace{-0.75pt}et}
+\newcommand{\Top}{\mathscr{T}\hspace{-3pt}op}
+\newcommand{\Grp}{\mathscr{G}rp}
+\newcommand{\Ab}{\mathscr{A}b}
+\newcommand{\Cring}{\symscr{C}\hspace{-1pt}\symscr{R}ing}
+\newcommand{\Ring}{\mathscr{R}ing}
+\newcommand{\Rng}{\mathscr{R}ng}
+\newcommand{\Sch}{\mathscr{S}\hspace{-0.75pt}ch}
+\newcommand{\Mod}{\mathscr{M}\!od}
+\newcommand{\Coh}{\mathscr{C}\!oh}
+\newcommand{\QCoh}{\mathscr{QC}\!oh}
+
