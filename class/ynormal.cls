@@ -146,11 +146,18 @@
     \newtheorem*{lemma*}{Lemma}
 
 % --- proof environment --- %
-\renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}% qedsymble command is already defined in amsthm
+    \renewcommand{\qedsymbol}{\scalebox{.5}[1]{\textcolor{gray}{$\blacksquare$}}}% qedsymble command is already defined in amsthm
     \newenvironment{myproof}{
         \vspace{-10pt}
         \begin{proofbox}
     }{
         \qedsymbol\end{proofbox}
     }
+    \renewenvironment{proof}{
+        \vspace{-10pt}
+        \noindent\emph{Proof.}
+    }{
+        \qedsymbol
+    }        
+    
 }
