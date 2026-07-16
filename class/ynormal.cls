@@ -154,7 +154,6 @@
         \qedsymbol\end{proofbox}
     }
     \renewenvironment{proof}{
-        \vspace{-10pt}
         \noindent\emph{Proof.}
     }{
         \qedsymbol
